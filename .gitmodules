@@ -1,0 +1,3 @@
+[submodule "datarobot_streamlit"]
+	path = datarobot_streamlit
+	url = git@github.com:datarobot/dr-streamlit.git
