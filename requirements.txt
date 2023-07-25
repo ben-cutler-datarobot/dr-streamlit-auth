@@ -1,2 +1,2 @@
-git+https://github.com/hunkim/streamlit-google-oauth
--r dr-streamlit/requirements.txt
+git+https://github.com/ben-cutler-datarobot/streamlit-google-oauth
+-r datarobot_streamlit/requirements.txt
