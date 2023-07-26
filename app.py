@@ -5,7 +5,7 @@ from datarobot_streamlit import streamlit_app
 
 client_id = os.getenv('clientid')
 client_secret = os.getenv('clientsecret')
-redirect_uri = os.getenv('redirecturi')
+redirect_uri = os.getenv('CUSTOM_APPLICATION_INGRESS')
 
 
 if __name__ == "__main__":
