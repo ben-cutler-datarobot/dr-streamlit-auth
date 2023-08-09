@@ -9,10 +9,25 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . .
-
+COPY requirements.txt requirements.txt
+COPY app.py app.py
+COPY datarobot_streamlit datarobot_streamlit
 RUN pip3 install -r requirements.txt
+RUN pip3 uninstall -y  watchdog
 
-EXPOSE 80
+ARG port=80
+ENV STREAMLIT_SERVER_PORT ${port}
+EXPOSE ${port}
 
-ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=80", "--server.address=0.0.0.0"]
+ARG deploymentId
+ARG projectId
+ARG apiToken
+ARG clientId
+ARG clientSecret
+ENV deploymentid=${deploymentId} \
+    projectid=${projectId} \
+    token=${apiToken} \
+    clientid=${clientId} \
+    clientsecret=${clientSecret}
+
+ENTRYPOINT ["streamlit", "run", "app.py"]

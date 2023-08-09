@@ -5,10 +5,12 @@ from datarobot_streamlit import streamlit_app
 
 client_id = os.getenv('clientid')
 client_secret = os.getenv('clientsecret')
-redirect_uri = os.getenv('CUSTOM_APPLICATION_INGRESS')
+external_url = os.getenv('DR_CUSTOM_APP_EXTERNAL_URL', 'https://foo.bar@0.0.0.0:8080')
 
 
 if __name__ == "__main__":
+    redirect_uri = 'https://' + external_url.split('@')[1]
+
     app_name = '''
     DataRobot Streamlit Google Authentication Demo
     '''
